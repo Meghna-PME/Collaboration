@@ -1,0 +1,361 @@
+<link href="ProjectFiles/CSSFiles/Decisions.css" rel="stylesheet" />
+<style type="text/css">
+	.tab {
+		background-color: #f1f1f1;
+		width: auto
+	}
+
+		.tab button {
+			background-color: inherit;
+			float: left;
+			border: none;
+			outline: none;
+			cursor: pointer;
+			padding: 5px 0px;
+			transition: 0.3s;
+			font-size: 13px;
+			margin: 0px;
+			min-width: 6em;
+		}
+
+			.tab button:hover {
+				background-color: #ddd;
+			}
+
+			.tab button.NA {
+				background-color: Black;
+				color: white;
+			}
+
+			.tab button.active {
+				background-color: Black;
+				color: white;
+			}
+
+			.tab button.NA {
+				background-color: Black;
+				color: white;
+			}
+
+			.tab button.Green {
+				background-color: #41bd46;
+				color: white;
+			}
+
+			.tab button.Yellow {
+				background-color: #F9FF33;
+				color: black;
+			}
+
+			.tab button.Red {
+				background-color: red;
+				color: white;
+			}
+
+			.tab button.Orange {
+				background-color: Orange;
+				color: white;
+			}
+
+			.tab button.Violet {
+				background-color: Violet;
+				color: white;
+			}
+
+			.tab button.Tomato {
+				background-color: Tomato;
+				color: white;
+			}
+
+			.tab button.lightBlue {
+				background-color: lightBlue;
+				color: black;
+			}
+
+			.tab button.MediumSeaGreen {
+				background-color: MediumSeaGreen;
+				color: white;
+			}
+
+	.tablinks2, .tablinks1 {
+		padding: 7px 4px !important;
+	}
+
+	.k-editable-area {
+		height: 67px !important;
+	}
+
+	.k-resize-handle {
+		display: none;
+	}
+</style>
+<div ng-init="init()">
+	<div style="margin: 10px;">
+		<!--<a href="" id="AddNewItemID" ng-click="AddNewItemWindow()">
+			<span class="pointer"><span class="k-icon k-i-plus"></span> Add New</span>
+		</a>  -->
+		<button type="button" id="btn_add" class="k-button k-button-icontext" style='margin-right: 100px;' ng-click="AddNewItemWindow();"><span class="k-icon k-i-plus-circle"></span>Add New</button>
+		<button type="button" id="btn_All" class="k-button k-button-icontext" style="background-color:Gray;color:white;" ng-click="ShowBenefit('');">All</button>
+		<button type="button" id="btn_Deferred" class="k-button k-button-icontext" style="background-color:Orange;color:white;" ng-click="ShowBenefit('Deferred');">Deferred</button>
+		<button type="button" id="btn_Draft" class="k-button k-button-icontext" style="background-color:Violet;color:white;" ng-click="ShowBenefit('Draft');">Draft</button>
+		<button type="button" id="btn_Hold" class="k-button k-button-icontext" style="background-color:Tomato;color:white;" ng-click="ShowBenefit('Hold');">Hold</button>
+		<button type="button" id="btn_Implemented" class="k-button k-button-icontext" style="background-color:lightBlue;color:black;" ng-click="ShowBenefit('Implemented');">Implemented</button>
+		<button type="button" id="btn_InProgress" class="k-button k-button-icontext" style="background-color:Yellow;color:Black;" ng-click="ShowBenefit('In Progress');">In Progress</button>
+		<button type="button" id="btn_Verified" class="k-button k-button-icontext" style="background-color:MediumSeaGreen;color:white;" ng-click="ShowBenefit('Verified');">Verified</button>
+	</div>
+
+	<div id="Benefitgrid"></div>
+	<div title="" ng-show='masde'>
+		<span id='tablinkfiled1'></span>
+		<span id='tablinkfiled2'></span>
+		<span id='tablinkfiled3'></span>
+		<span id='tablinkfiled4'></span>
+		<span id='tablinkfiled5'></span>
+		<span id='tablinkfiled6'></span>
+	</div>
+
+	<div id="KWindowDecisions" style="display:none;" class="kCUSwindow" kendo-window="KWindowDecisions" k-title="'Benefits'" k-width="900" k-height="500" k-visible="false" k-on-open="KWindowDecisionsvisible = true" k-on-close="KWindowDecisionsvisible = false">
+		<div class="k-content" style="    padding-left: 49px;   padding-top: 15px;">
+			<div class="form-horizontal">
+				<div class="form-group">
+					<div class="col-sm-2 riskscss no-padding">
+						<label for="IssuesTitle">Title<span class="required" style="color:red;font-weight:bold">*</span></label>
+					</div>
+					<div class="col-sm-8  no-padding">
+						<input type="text" id="IssuesTitle" ng-disabled='ViewMode' style=" border-color: lightgray; width: 108%; padding-left: 7px;" maxlength="60" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Title" />
+					</div>
+				</div>
+				<!--	<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Status">Status	</label>
+						</div>
+						<div class="col-sm-3  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.Status" disabled  style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"  kendo-drop-down-list k-options="KRequirementManagementStatusDDList" >
+							<option value=""	 disabled selected>Select Status...</option>
+							</select>
+						</div>
+						<div class="col-sm-3  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.Status"  style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"  kendo-drop-down-list k-options="KRequirementManagementStatusDDList" >
+							<option value=""	 disabled selected>Select Status...</option>
+							</select>
+						</div>
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Progress">Progress	</label>
+						</div>
+						<div class="col-sm-3  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.Progress" disabled  style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"  kendo-drop-down-list k-options="KRequirementManagementProgressDDList" >
+							<option value=""	 disabled selected>Select Progress...</option>
+							</select>
+						</div>
+						<div class="col-sm-3  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.Progress"  style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"  kendo-drop-down-list k-options="KRequirementManagementProgressDDList" >
+							<option value=""	 disabled selected>Select Progress...</option>
+							</select>
+						</div>
+
+					</div> -->
+				<!--	<div class="form-group" title="">
+						<div class="col-sm-1 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Status">Status<span class="required"style="color:red;font-weight:bold">*</span></label>
+						</div>
+						<div class="col-sm-10 no-padding">
+						 <div class="tab">
+							  <button type='button' ng-disabled='ViewMode' class="tablinks1" onclick="opencolor(event, 'Proposed','NA','tablinks1')">Proposed</button>
+							  <button type='button' ng-disabled='ViewMode' class="tablinks1" onclick="opencolor(event, 'Approved','NA','tablinks1')">Approved</button>
+							  <button type='button' ng-disabled='ViewMode' class="tablinks1" onclick="opencolor(event, 'Rejected','NA','tablinks1')">Rejected</button>
+							  <button type='button' ng-disabled='ViewMode' class="tablinks1 NA" onclick="opencolor(event, 'NA','NA','tablinks1')">NA</button>
+							</div>
+						</div>
+					</div>--->
+				<div class="form-group" title="">
+					<div class="col-sm-2 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="Progress">Status <span class="required" style="color:red;font-weight:bold">*</span></label>
+					</div>
+					<div class="col-sm-9 no-padding">
+						<div class="tab">
+
+							<button type='button' ng-disabled='ViewMode' class="tablinks2" onclick="opencolorMulBtn(event, 'Deferred','NA','tablinks2')">Deferred</button>
+							<button type='button' ng-disabled='ViewMode' class="tablinks2" onclick="opencolorMulBtn(event, 'Draft','NA','tablinks2')">Draft</button>
+							<button type='button' ng-disabled='ViewMode' class="tablinks2" onclick="opencolorMulBtn(event, 'Hold','NA','tablinks2')">Hold</button>
+							<button type='button' ng-disabled='ViewMode' class="tablinks2" onclick="opencolorMulBtn(event, 'Implemented','NA','tablinks2')">Implemented</button>
+							<button type='button' ng-disabled='ViewMode' class="tablinks2" onclick="opencolorMulBtn(event, 'In Progress','NA','tablinks2')">In Progress</button>
+							<button type='button' ng-disabled='ViewMode' class="tablinks2" onclick="opencolorMulBtn(event, 'Verified','NA','tablinks2')">Verified</button>
+							<button type='button' ng-disabled='ViewMode' class="tablinks2 NA" onclick="opencolorMulBtn(event, 'NA','NA','tablinks2')">NA</button>
+						</div>
+					</div>
+				</div>
+
+
+
+				<div class="form-group" title="">
+					<div class="col-sm-2 riskscss no-padding" title="">
+						<label for="Whenwillbenefitberealized">
+							When will benefit be realized
+						</label>
+					</div>
+					<div class="col-sm-3 no-padding" ng-show='ViewMode'>
+						<input id="Whenwillbenefitberealized" style="width: 212px;" disabled kendo-date-picker data-ng-model="Item.Whenwillbenefitberealized" />
+					</div>
+					<div class="col-sm-3 no-padding" ng-hide='ViewMode'>
+						<input id="Whenwillbenefitberealized" style="width: 212px;" kendo-date-picker data-ng-model="Item.Whenwillbenefitberealized" />
+					</div>
+
+					<div class="col-sm-2 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="Weight">
+							Weight
+						</label>
+					</div>
+					<div class="col-sm-3  no-padding">
+						<input id="ActualsToDate" class='k-input k-inputPadTextBox k-window-input-width k-window-input-control' ng-disabled='ViewMode' onkeypress="return isNumberKeyDesPoint(event)" placeholder="Enter Number only..." type="text" data-ng-model="Item.Weight" min="0" max="" style=" border-color: lightgray; width: 94%; padding-left: 7px;" />
+					</div>
+
+
+				</div>
+
+				<div class="form-group">
+					<div class="col-sm-2 riskscss no-padding">
+						<label for="Person">
+							Person responsible for benefits attainment reporting
+						</label>
+					</div>
+					<div class="col-sm-4 no-padding" ng-hide='ViewMode'>
+						<div data-ng-disabled="false" data-ng-model="Item.Person" style="" name="Person" ui-people pp-is-multiuser="false" pp-width="185px" pp-account-type="User,DL" id="Person"></div>
+					</div>
+					<div class="col-sm-4 no-padding" ng-show='ViewMode'>
+						<input type="text" disabled style=" border-color: lightgray; width: 94%; padding-left: 7px;" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Person.Title" />
+					</div>
+
+				</div>
+
+				<div class="form-group">
+
+
+					<div class="col-sm-2 riskscss no-padding">
+						<label for="Reviewer">
+							Reviewer
+						</label>
+					</div>
+					<div class="col-sm-4 no-padding" ng-hide='ViewMode'>
+						<div data-ng-disabled="false" data-ng-model="Item.Reviewer" style="" name="Reviewer" ui-people pp-is-multiuser="false" pp-width="185px" pp-account-type="User,DL" id="Reviewer"></div>
+					</div>
+					<div class="col-sm-4 no-padding" ng-show='ViewMode'>
+						<input type="text" disabled style=" border-color: lightgray; width: 94%; padding-left: 7px;" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Reviewer.Title" />
+					</div>
+				</div>
+
+				<div class="form-group" title="">
+					<div class="col-sm-12 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="Description">
+							Metric Description
+						</label>
+					</div>
+					<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<!--<textarea name="txtDescription" rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.Description"></textarea>-->
+						<textarea name="txtDescription" rows="7" class="k-input k-window-input-width k-window-input-control" style="width:102.5%;" k-options="editorOptions" k-resizable="true" data-ng-model="Item.Description"></textarea>
+					</div>
+					<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+						<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.Description)"></p>
+					</div>
+				</div>
+
+				<div class="form-group" title="">
+					<div class="col-sm-12 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="ExpectedBenefitFromXtoYortargets">
+							Expected Benefit From X to Y or targets
+						</label>
+					</div>
+					<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<textarea name="txtDescription" rows="7" class="k-input k-window-input-width k-window-input-control" style="width:102.5%;" k-options="editorOptions" k-resizable="true" data-ng-model="Item.ExpectedBenefitFromXtoYortargets"></textarea>
+						<!--<textarea name="txtExpectedBenefitFromXtoYortargets" rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.ExpectedBenefitFromXtoYortargets"></textarea>-->
+					</div>
+					<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+						<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.ExpectedBenefitFromXtoYortargets)"></p>
+					</div>
+				</div>
+
+				<div class="form-group" title="">
+					<div class="col-sm-12 riskscss no-padding" title="">
+						<label class="k-two-col-label" for="Howwillitbemeasured">
+							How will it be measured
+						</label>
+					</div>
+					<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<!--<textarea name="txtHowwillitbemeasured" rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.Howwillitbemeasured"></textarea>-->
+						<textarea name="txtDescription" rows="7" class="k-input k-window-input-width k-window-input-control" style="width:102.5%;" k-options="editorOptions" k-resizable="true" data-ng-model="Item.Howwillitbemeasured"></textarea>
+					</div>
+					<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+						<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.Howwillitbemeasured)"></p>
+					</div>
+				</div>
+
+
+				<div class="col-sm-12" ng-hide='ViewMode'>
+					<div class="form-group">
+						<div class="files" id="attachFilesHolder">
+							<label for="ecProjectDescription" class="control-label">Attach a File:</label>
+
+							<input id="file_input" type="file" name="files[]">
+						</div>
+					</div>
+				</div>
+				<!--	<div class="form-group" title="" >
+						<div class="col-sm-12" >
+							<label for="email">Attachments: </label>
+							<span ng-repeat="x in Item.Attachment.results">
+							<a  href="{{x.ServerRelativeUrl}}" title="{{x.ServerRelativeUrl}}">{{x.FileName}} &nbsp;</a>
+							</span>
+						</div>
+					</div> -->
+				<div class="form-group" title="">
+					<div class="col-sm-12">
+						<div class="col-sm-1">
+							<label style="margin-left: -16px;" for="email">Attachments: </label>
+						</div>
+						<div class="col-sm-9" ng-show="Item.Attachment.results.length != 0">
+							<span ng-repeat="x in Item.Attachment.results">
+								<a href="{{x.ServerRelativeUrl}}" title="{{x.ServerRelativeUrl}}">{{x.FileName}} </a>
+								<a href="" title="Delete Attachment" ng-hide='ViewMode' style="margin-left: 20px;" ng-click="DecisionremoveFileFromList(Item,x, $index)">
+									<span class="pointer"><span class="k-icon k-i-trash"></span></span>
+								</a>
+								<br>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer foot-modal-footer Kendo-foot-modal-footer">
+					<span class="required" ng-show="ischkDecisionsAlert" style="color:red;font-weight:bold">Please populate all required fields indicated with an *</span>
+					<div class="col-sm-7 no-padding-left">
+					</div>
+					<div class="col-sm-4" ng-hide='ViewMode'>
+						<button id="btnDecisionsave" style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Save changes & exit" ng-click="SaveDecisions();">Save</button>
+						<button id="btnDecisionClose" style="background-color: white;" class="k-button btn btnC  save-button" ng-click="CloseDecisionsForm();">Close</button>
+
+					</div>
+					<div class="col-sm-4" ng-show='ViewMode'>
+
+						<button id="btnDecisionkEdit" style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Click to Edit" ng-click="EditDecisions();">Edit</button>
+						<button id="btnDecisionClose" style="background-color: white;" class="k-button btn btnC  save-button" ng-click="CloseDecisionsForm();">Close</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--- End K Window -->
+
+</div>
+
+<html>
+<head>
+	<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+	<meta name="Robots" content="NOINDEX " />
+</head>
+<body>
+</body>
+<script type="text/javascript">
+	var gearPage = document.getElementById('GearPage');
+	if (null != gearPage) {
+		gearPage.parentNode.removeChild(gearPage);
+		document.title = "Error";
+	}
+</script>
+</html>

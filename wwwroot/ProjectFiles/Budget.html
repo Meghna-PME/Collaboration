@@ -1,0 +1,221 @@
+<!--<link href="ProjectFiles/CSSFiles/Budget.css" rel="stylesheet" />-->
+<div ng-init="init()">
+<div  style="margin: 10px;" ng-hide='TrueProjectName'>
+	<a href="" id="AddNewItemID" ng-click="AddNewItemWindow()">
+		<span class="pointer"><span class="k-icon k-i-plus"></span> Add New</span>
+	</a> 
+</div>
+
+<div id="Budgetgrid" ></div>
+
+ <div id="KWindowBudget" style="display:none;" class="kCUSwindow" kendo-window="KWindowBudget" k-title="'Budget'" k-width="900" k-height="350" k-visible="false" k-on-open="KWindowBudgetvisible = true" k-on-close="KWindowBudgetvisible = false">
+			<div class="k-content" style="    padding-left: 49px;   padding-top: 15px;">
+				<div class="form-horizontal">
+					<div class="form-group">
+						<div class="col-sm-1 riskscss no-padding">
+							<label for="IssuesTitle">Title<span style="color:red;font-weight:bold">*</span>
+							
+<span class="pointer" ng-show="BudgetListF[3].Description != null && BudgetListF[3].Description !='' "	kendo-tooltip k-content="BudgetListF[3].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span></label>
+						</div>
+						<div class="col-sm-9  no-padding">
+							<input type="text" id="IssuesTitle"  ng-disabled='ViewMode' style=" border-color: lightgray; width: 106%; padding-left: 7px;" maxlength="60" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Title" />
+						</div>
+					</div>
+				<!--	<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding">
+							<label for="StatusID">Status</label>
+						</div>
+						<div class="col-sm-8  no-padding">
+							<input type="text" id="StatusID" style=" border-color: lightgray; width: 108%; padding-left: 7px;" maxlength="60" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.StatusID" />
+						</div>
+					</div> -->
+					<div class="form-group">
+						<div class="col-sm-1 riskscss no-padding">
+							<label for="BaselineCost">Baseline <br>Cost
+							
+<span class="pointer" ng-show="BudgetListF[1].Description != null && BudgetListF[1].Description !='' "	kendo-tooltip k-content="BudgetListF[1].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span></label>
+						</div>
+						<div class="col-sm-2 no-padding">						
+							   <input id="BaselineCost"  class='' placeholder="Enter Number only..."  ng-disabled='ViewMode' type="text" onkeypress="return isNumberKeyDesPoint(event)"  data-ng-model="Item.BaselineCost"  min="0" max="" style="width: 95%; height: 25px;" />						
+						</div>
+						<div class="col-sm-1 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="CurrentForecast">Current  <br>Forecast
+							<span class="pointer" ng-show="BudgetListF[2].Description != null && BudgetListF[2].Description !='' "	kendo-tooltip k-content="BudgetListF[2].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span></label>
+						</div>
+						<div class="col-sm-2  no-padding">
+							  <input id="CurrentForecast" class=''  ng-disabled='ViewMode'  placeholder="Enter Number only..." type="text" data-ng-model="Item.CurrentForecast"  onkeypress="return isNumberKeyDesPoint(event)"  min="0" max="" style="width: 95%; height: 25px;" />
+						</div>
+						<div class="col-sm-1 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="ActualsToDate">Actuals  <br>To Date
+							<span class="pointer" ng-show="BudgetListF[0].Description != null && BudgetListF[0].Description !='' "	kendo-tooltip k-content="BudgetListF[0].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span></label>
+						</div>
+						<div class="col-sm-2  no-padding">
+							  <input id="ActualsToDate" class=''  ng-disabled='ViewMode' onkeypress="return isNumberKeyDesPoint(event)" placeholder="Enter Number only..." type="text" data-ng-model="Item.ActualsToDate"   min="0" max="" style="width: 95%; height: 25px;" />
+						</div>
+					
+					</div>
+					<!--<div class="form-group">						
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="ActualsToDate">Actuals  <br>To Date</label>
+						</div>
+						<div class="col-sm-3  no-padding">
+							  <input id="ActualsToDate" class=''  ng-disabled='ViewMode' onkeypress="return isNumberKeyDesPoint(event)" placeholder="Enter Number only..." type="text" data-ng-model="Item.ActualsToDate"   min="0" max="" style="width: 95%; height: 25px;" />
+						</div>
+					
+					</div> -->
+
+					
+
+					<div class="col-sm-12" ng-hide='ViewMode'>
+						<div class="form-group">
+							<div class="files" id="attachFilesHolder">
+								<label for="ecProjectDescription" class="control-label">Attach a File:</label>
+
+								<input id="file_input" type="file" name="files[]">
+							</div>	
+						</div>
+					</div>	
+					<!--<div class="form-group" title="">
+						<div class="col-sm-12" >
+							<label for="email">Attachments: </label>
+							<span ng-repeat="x in Item.Attachment.results">										       
+							<a  href="{{x.ServerRelativeUrl}}" title="{{x.ServerRelativeUrl}}">{{x.FileName}} &nbsp;</a>
+							</span>
+						</div>
+					</div>-->
+					<div class="form-group" title="" >
+						<div class="col-sm-12" >
+							<div class="col-sm-1" >
+									<label style="margin-left: -16px;" for="email">Attachments: </label>
+							</div>
+							<div class="col-sm-9" ng-show="Item.Attachment.results.length != 0" >
+								<span ng-repeat="x in Item.Attachment.results">										       
+									<a  href="{{x.ServerRelativeUrl}}" title="{{x.ServerRelativeUrl}}">{{x.FileName}} </a>
+									<a href="" title="Delete Attachment"  ng-hide='ViewMode' style="margin-left: 20px;" ng-click="SBudgetremoveFileFromList(Item,x, $index)">
+										<span class="pointer"><span class="k-icon k-i-trash"></span></span>
+									</a>
+									<br>
+								</span>
+							</div>
+						</div>
+					</div>	
+					<div class="modal-footer foot-modal-footer Kendo-foot-modal-footer">
+						<span class="required" ng-show="ischkBudgetAlert" style="color:red;font-weight:bold">Please populate all required fields indicated with an *</span>
+						<div class="col-sm-7 no-padding-left">									
+						</div>
+						<div class="col-sm-4" ng-hide='ViewMode'>	
+							<button id="btnBudgetksave"  style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Save changes & exit" ng-click="SaveBudget();">Save</button>																	
+							<button  id="btnBudgetkClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseBudgetForm();">Close</button>
+							
+						</div>
+						<div class="col-sm-4" ng-show='ViewMode'>																		
+									
+									<button id="btnBudgetkEdit" ng-hide='TrueProjectName' style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Click to Edit" ng-click="EditBudget();">Edit</button>
+										<button  id="btnBudgetkClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseBudgetForm();">Close</button>
+								</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--- End K Window -->
+			
+</div>
+ <script>
+	$(document).ready(function() {
+		
+		$(".currency").kendoNumericTextBox({
+			format: "c",
+			decimals: 3
+		});
+
+		$("input[data-type='currency']").on({
+			keyup: function() {
+			formatCurrency($(this));
+			},
+			blur: function() { 
+			formatCurrency($(this), "blur");
+			}
+		});
+	});
+
+	
+function formatNumber(n) {
+  // format number 1000000 to 1,234,567
+  return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+}
+
+
+function formatCurrency(input, blur) {
+  // appends $ to value, validates decimal side
+  // and puts cursor back in right position.
+  
+  // get input value
+  var input_val = input.val();
+  
+  // don't validate empty input
+  if (input_val === "") { return; }
+  
+  // original length
+  var original_len = input_val.length;
+
+  // initial caret position 
+  var caret_pos = input.prop("selectionStart");
+    
+  // check for decimal
+  if (input_val.indexOf(".") >= 0) {
+	  debugger
+
+    // get position of first decimal
+    // this prevents multiple decimals from
+    // being entered
+    var decimal_pos = input_val.indexOf(".");
+
+    // split number by decimal point
+    var left_side = input_val.substring(0, decimal_pos);
+    var right_side = input_val.substring(decimal_pos);
+
+    // add commas to left side of number
+    left_side = formatNumber(left_side);
+
+    // validate right side
+    right_side = formatNumber(right_side);
+    
+    // On blur make sure 2 numbers after decimal
+    if (blur === "blur") {
+      right_side += "00";
+    }
+    
+    // Limit decimal to only 2 digits
+    right_side = right_side.substring(0, 2);
+
+    // join number by ."$" + 
+    input_val = left_side + "." + right_side;
+
+  } else {
+	  debugger
+    // no decimal entered
+    // add commas to number
+    // remove all non-digits"$" +
+    input_val = formatNumber(input_val);
+    input_val =  input_val;
+    
+    // final formatting
+    if (blur === "blur") {
+      input_val += ".00";
+    }
+  }
+  
+  // send updated string to input
+  input.val(input_val);
+
+  // put caret back in the right position
+  var updated_len = input_val.length;
+  caret_pos = updated_len - original_len + caret_pos;
+  input[0].setSelectionRange(caret_pos, caret_pos);
+}
+</script>
+

@@ -1,0 +1,142 @@
+
+<link rel="stylesheet" href="ProjectFiles/CSSFiles/Benefit.css"> 
+
+<style type="text/css">
+.tab {  
+  background-color: #f1f1f1;
+  width:auto
+}
+.k-tooltip-content{
+text-align: left !important;
+}
+.jexcel > thead > tr > td {
+    white-space: normal !important;
+}
+
+.sp-peoplepicker-userDisplayLink {
+    text-decoration: underline;
+    display: inline-block;
+	max-width: 150px;
+}
+
+#ProjectEvent_Budget{
+	font-size: 12px !important;
+}
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 0px;
+  transition: 0.3s;
+  font-size: 13px;
+  margin: 0px;
+  
+  min-width: 6em;
+}
+.tab button:hover {
+  background-color: #ddd;
+}
+.tab button.NA {
+  background-color: Black;
+  color: white;
+}
+
+.tab button.active {
+  background-color: Black;
+  color: white;
+}
+
+.tab button.NA {
+  background-color: Black;
+  color: white;
+}
+.tab button.Green {
+  background-color: #41bd46;
+  color: white;
+}
+.tab button.Yellow {
+  background-color: #F9FF33;
+  color: black;
+}
+.tab button.Red {
+  background-color: red;
+  color: white;
+}
+
+.tab button.Orange {
+  background-color: Orange;
+  color: white;
+}
+.tab button.Violet {
+  background-color: Violet;
+  color: white;
+}
+.tab button.Tomato {
+  background-color: Tomato;
+  color: white;
+}
+.tab button.lightBlue {
+  background-color: lightBlue;
+  color: black;
+}
+.tab button.MediumSeaGreen {
+  background-color: MediumSeaGreen;
+  color: white;
+}
+.tablinks2,.tablinks1{
+	padding: 7px 4px !important;
+}
+.k-editable-area{
+height: 67px !important;
+}
+.k-resize-handle{
+	display: none;
+}
+.k-window{
+top: 20% !important;
+    left: 15% !important;
+}
+
+.ViewRdioS{
+margin-left: 25px;
+    font-weight: bold;
+}
+.ViewRdioF{
+    font-weight: bold;
+}
+/*.k-multiselect-wrap{
+width:91% !important;
+}*/
+textarea {
+    resize: none;
+}
+.k-editor.k-resizable .k-editable-area {
+    height: 81px !important;
+}
+</style>
+<div ng-init="init()">
+<div  style="margin: 10px;"  ng-hide = "Permissions">
+	<a href="" style='color:#337ab7;' id="AddNewItemID" ng-click="AddPMWindow()">
+		<span class="pointer"><span class="k-icon k-i-plus"></span> Add New</span>
+	</a> 	
+</div>
+
+<div id="PManagementMainGrid" ></div>
+	
+<div id="PMwindowPreData" style="display:none;" class="kCUSwindow" kendo-window="PMwindowPreData" k-title="'Projects'" k-width="900" k-height="450" k-visible="false" k-on-open="win2visible = true" k-on-close="win2visible = false">
+	<div class="k-content" style='padding: 19px;'>
+		<div class="form-horizontal">
+			<div id="PManagementMainGridPreFillWindow"></div>
+			<div class="modal-footer foot-modal-footer Kendo-foot-modal-footer">
+				<div class="col-sm-7 no-padding-left"></div>
+				<div class="col-sm-4" style="width: 100%;">
+				<button class="k-button btnclass save-button" style="background-color: white;"title="Save changes & exit" ng-click="SaveLPDataBtn();" id="btnPFbtn">Save</button>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+

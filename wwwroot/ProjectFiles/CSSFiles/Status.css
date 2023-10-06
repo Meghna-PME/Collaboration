@@ -1,0 +1,52 @@
+
+select:focus{
+	border-color: #dedee0 !important;
+}
+
+.textdecoration:hover, .textdecoration:active{
+  text-decoration: underline;
+}
+
+.sp-peoplepicker-topLevel:hover{
+	border-color: #dedee0 !important;
+}
+	
+.ms-entity-unresolved{
+		background-image:none !important;
+	}
+.ui-front {
+    z-index: 10006 !important;
+}
+.k-grid tr:hover {
+    color: #fff !important;
+    background-color: #8ebc00 !important;
+}
+  .k-grid td {
+                border-bottom-width: 1px !important;
+            }
+table.k-editor {
+    width: 103%  !important;
+}
+.sp-peoplepicker-topLevel{
+	height:25px !important;
+}
+.btn
+{
+    width: 84px !important;
+    font-size: 12px  !important;
+    border-radius: 50em;	
+}
+.btnS
+{
+    background-color: #015991 !important;
+	color: #fff !important;
+}
+.k-header>.k-grid-excel{
+	 background-color: #015991 !important;
+	color: #fff !important;
+}
+.btnC
+{
+    background-color: #595b61 !important;
+	color: #fff !important;
+}

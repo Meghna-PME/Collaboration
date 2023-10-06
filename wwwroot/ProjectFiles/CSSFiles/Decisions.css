@@ -1,0 +1,62 @@
+/*
+ .k-draghandle.k-state-selected:hover, .k-ghost-splitbar-horizontal, .k-ghost-splitbar-vertical, .k-list>.k-state-highlight, .k-list>.k-state-selected, .k-marquee-color, .k-panel>.k-state-selected, .k-scheduler .k-scheduler-toolbar .k-state-selected, .k-scheduler .k-today.k-state-selected, .k-state-selected, .k-state-selected:link, .k-state-selected:visited, .k-tool.k-state-selected {
+    color: #fff !important;
+    background-color: #7ea700 !important;
+    border-color: #7ea700 !important;
+} */
+
+select:focus{
+	border-color: #dedee0 !important;
+}
+.textdecoration:hover, .textdecoration:active{
+  text-decoration: underline;
+}
+
+.sp-peoplepicker-topLevel:hover{
+	border-color: #dedee0 !important;
+}
+.k-grid tr:hover {
+    color: #fff !important;
+    background-color: #8ebc00 !important;
+}
+  .k-grid td {
+                border-bottom-width: 1px !important;
+            }
+
+body {
+		margin: 0px !important;
+	}
+
+.ms-entity-unresolved{
+		background-image:none !important;
+	}
+.ui-front {
+    z-index: 10006 !important;
+}
+table.k-editor {
+    width: 103%  !important;
+}
+.sp-peoplepicker-topLevel{
+	height:25px !important;
+}
+.btn
+{
+    width: 84px !important;
+    font-size: 12px  !important;
+    border-radius: 50em;	
+}
+.btnS
+{
+    background-color: #015991 !important;
+	color: #fff !important;
+}
+.btnC
+{
+    background-color: #595b61 !important;
+	color: #fff !important;
+}
+
+.k-header>.k-grid-excel{
+	 background-color: #015991 !important;
+	color: #fff !important;
+}

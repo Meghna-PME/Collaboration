@@ -1,0 +1,240 @@
+
+<link rel="stylesheet" href="ProjectFiles/CSSFiles/Status.css"> 
+<style type="text/css">
+
+
+</style>
+<div ng-init="init()">
+<div  style="margin: 10px;" ng-hide='TrueProjectName'>
+	<a href="" id="AddNewItemID"  ng-hide="WeekNumberIstrue" ng-click="AddNewItemWindow()">
+		<span class="pointer"><span class="k-icon k-i-plus"></span> Add New</span>
+	</a> 
+</div>
+
+<div id="StatusMaingrid" ></div>
+	<!--- K Window -->
+		 <div id="KWindowStatusMain" style="display:none;" class="kCUSwindow" kendo-window="KWindowStatusMain" k-title="'Project Status'" k-width="900" k-height="500" k-visible="false" k-on-open="KWindowStatusMainvisible = true" k-on-close="KWindowStatusMainvisible = false">
+			<div class="k-content" style="    padding-left: 49px;   padding-top: 15px;">
+				<div class="form-horizontal">
+					<div class="form-group" ng-show='ViewMode'>
+						<div class="col-sm-2 riskscss no-padding">
+							<label for="StatusMainTitle">Title</label>
+						</div>
+						<div class="col-sm-8  no-padding">
+							<input type="text" id="StatusMainTitle" disabled  style=" border-color: lightgray; width: 108%; padding-left: 7px;" maxlength="60" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Title" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="SystemOverallHealth">Overall Health
+								<span class="pointer" ng-show="StatusListF[5].Description != null && StatusListF[5].Description !='' "	kendo-tooltip k-content="StatusListF[5].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3  no-padding">
+							<select required ng-model="Item.SystemOverallHealth" disabled  style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" kendo-drop-down-list k-options="KHealthDDList" >
+							<option value=""	 disabled selected>Select System Overall Health...</option>
+							</select>
+						</div>
+						
+
+
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="SystemScheduleHealth">Schedule Health
+								<span class="pointer" ng-show="StatusListF[7].Description != null && StatusListF[7].Description !='' "	kendo-tooltip k-content="StatusListF[7].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.SystemScheduleHealth"  k-on-change='changeHealth();'  disabled style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"kendo-drop-down-list k-options="KHealthDDList" >
+							</select>
+						</div>
+						<div class="col-sm-3  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.SystemScheduleHealth"  k-on-change='changeHealth();'   style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"kendo-drop-down-list k-options="KHealthDDList" >
+							</select>
+						</div>
+						
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="SystemResourceHealth">Resource Health
+								<span class="pointer" ng-show="StatusListF[6].Description != null && StatusListF[6].Description !='' "	kendo-tooltip k-content="StatusListF[6].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.SystemResourceHealth"  k-on-change='changeHealth();' disabled style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" kendo-drop-down-list k-options="KHealthDDList" >
+							</select>
+						</div>
+
+						<div class="col-sm-3  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.SystemResourceHealth"  k-on-change='changeHealth();'   style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" kendo-drop-down-list k-options="KHealthDDList" >
+							<option value=""	 disabled selected>Select System Resource Health...</option>
+							</select>
+						</div>
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="SystemBudgetHealth">Budget Health
+								<span class="pointer" ng-show="StatusListF[4].Description != null && StatusListF[4].Description !='' "	kendo-tooltip k-content="StatusListF[4].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.SystemBudgetHealth" k-on-change='changeHealth();'  disabled  style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"  kendo-drop-down-list k-options="KHealthDDList" >
+							</select>
+						</div>
+						<div class="col-sm-3  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.SystemBudgetHealth" k-on-change='changeHealth();'  style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"  kendo-drop-down-list k-options="KHealthDDList" >
+							</select>
+						</div>
+						
+					</div>
+				<!--	<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="UserBudgetHealth">User Budget Health</label>
+						</div>
+						<div class="col-sm-3  no-padding">
+							<select required ng-model="Item.UserBudgetHealth"  ng-disabled='ViewMode' style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" ng-options="x for x in HealthDDList">
+							<option value=""	 disabled selected>Select User Budget Health...</option>
+							</select>
+						</div>
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="UserScheduleHealth">User Schedule Health</label>
+						</div>
+						<div class="col-sm-3  no-padding">
+							<select required ng-model="Item.UserScheduleHealth"  ng-disabled='ViewMode' style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" ng-options="x for x in HealthDDList">
+							<option value=""	 disabled selected>Select User Schedule Health...</option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="UserOverallHealth">User Overall Health</label>
+						</div>
+						<div class="col-sm-3  no-padding">
+							<select required ng-model="Item.UserOverallHealth"  ng-disabled='ViewMode' style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" ng-options="x for x in HealthDDList">
+							<option value=""	 disabled selected>Select User Overall Health...</option>
+							</select>
+						</div>
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="UserResourceHealth">User Resource Health</label>
+						</div>
+						<div class="col-sm-3  no-padding">
+							<select required ng-model="Item.UserResourceHealth"  ng-disabled='ViewMode' style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" ng-options="x for x in HealthDDList">
+							<option value=""	 disabled selected>Select User Resource Health...</option>
+							</select>
+						</div>
+					</div> -->
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="ExecutiveSummary">Executive Summary
+								<span class="pointer" ng-show="StatusListF[0].Description != null && StatusListF[0].Description !='' "	kendo-tooltip k-content="StatusListF[0].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<!--<textarea name="txtDescription" rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.ExecSummary"></textarea>-->
+						<textarea name="txtDescription" rows="7" class="k-input k-window-input-width k-window-input-control" style="width:102.5%;"  k-options="editorOptions" k-resizable="true" data-ng-model="Item.ExecSummary"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.ExecSummary)"></p>
+						</div>
+					</div>
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Progress">Progress
+								<span class="pointer" ng-show="StatusListF[2].Description != null && StatusListF[2].Description !='' "	kendo-tooltip k-content="StatusListF[2].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<!--<textarea name="txtDescription" rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.Progress"></textarea>-->
+						<textarea name="txtDescription" rows="7" style="width:102.5%;" class="k-input k-window-input-width k-window-input-control" k-options="editorOptions" k-resizable="true" data-ng-model="Item.Progress"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.Progress)"></p>
+						</div>
+					</div>
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Outlook">Outlook
+								<span class="pointer" ng-show="StatusListF[1].Description != null && StatusListF[1].Description !='' "	kendo-tooltip k-content="StatusListF[1].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<!--<textarea name="txtDescription" rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.Outlook"></textarea>-->
+						<textarea name="txtDescription" rows="7" class="k-input k-window-input-width k-window-input-control" style="width:102.5%; "  k-options="editorOptions" k-resizable="true" data-ng-model="Item.Outlook"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.Outlook)"></p>
+						</div>
+					</div>
+					<div class="form-group" title="" ng-show='ViewMode'>				
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label for="StatusDate">Status Date 
+								<span class="pointer" ng-show="StatusListF[3].Description != null && StatusListF[3].Description !='' "	kendo-tooltip k-content="StatusListF[3].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3 no-padding">
+							<input id="StatusDate" style="width: 212px;" k-ng-disabled='ViewMode'  kendo-date-picker data-ng-model="Item.StatusDate"  />
+						</div>									
+					</div> 
+
+					<div class="col-sm-12" ng-hide='ViewMode'>
+						<div class="form-group">
+							<div class="files" id="attachFilesHolder">
+								<label for="ecProjectDescription" class="control-label">Attach a File:</label>
+
+								<input id="file_input" type="file" name="files[]">
+							</div>	
+						</div>
+					</div>
+					<!--<div class="form-group" title="" >
+						<div class="col-sm-12" >
+							<label for="email">Attachments: </label>
+							<span ng-repeat="x in Item.Attachment.results">										       
+							<a  href="{{x.ServerRelativeUrl}}" title="{{x.ServerRelativeUrl}}">{{x.FileName}} &nbsp;</a>
+							</span>
+						</div>
+					</div> -->
+					<div class="form-group" title="" >
+						<div class="col-sm-12" >
+							<div class="col-sm-1" >
+									<label style="margin-left: -16px;" for="email">Attachments: </label>
+							</div>
+							<div class="col-sm-9" ng-show="Item.Attachment.results.length != 0" >
+								<span ng-repeat="x in Item.Attachment.results">										       
+									<a  href="{{x.ServerRelativeUrl}}" title="{{x.ServerRelativeUrl}}">{{x.FileName}} </a>
+									<a href="" title="Delete Attachment"  ng-hide='ViewMode' style="margin-left: 20px;" ng-click="SMainremoveFileFromList(Item,x, $index)">
+										<span class="pointer"><span class="k-icon k-i-trash"></span></span>
+									</a>
+									<br>
+								</span>
+							</div>
+						</div>
+					</div>	
+					
+										
+					<div class="modal-footer foot-modal-footer Kendo-foot-modal-footer">
+								<span class="required" ng-show="ischkStatusMainAlert" style="color:red;font-weight:bold">Please populate all required fields indicated with an *</span>
+								<div class="col-sm-7 no-padding-left">									
+								</div>
+								<div class="col-sm-4" ng-hide='ViewMode'>
+									<button id="btnStatusMainsave"   style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Save changes & exit" ng-click="SaveStatusMain();">Save</button>	
+							<button  id="btnStatusMainClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseStatusMainForm();">Close</button>
+																		
+					
+						</div>
+						<div class="col-sm-4" ng-show='ViewMode'>																		
+									
+									<button id="btnStatuysMainEdit"  ng-hide='TrueProjectName' style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Click to Edit" ng-click="EditStatusMain();">Edit</button>
+										<button  id="btnEditStatusMainClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseStatusMainForm();">Close</button>
+								</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--- End K Window -->
+</div>
+

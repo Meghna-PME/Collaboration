@@ -1,0 +1,217 @@
+<link href="ProjectFiles/CSSFiles/Insight.css" rel="stylesheet" />
+<div ng-init="init()">
+<div  style="margin: 10px;">
+	<a href="" id="AddNewItemID" ng-click="AddNewItemWindow()">
+		<span class="pointer"><span class="k-icon k-i-plus"></span> Add New</span>
+	</a> 
+</div>
+
+<div id="InsightGrid" ></div>
+
+ <div id="KWindowInsight" style="display:none;" class="kCUSwindow" kendo-window="KWindowInsight" k-title="'Insight'" k-width="900" k-height="500" k-visible="false" k-on-open="KWindowInsightvisible = true" k-on-close="KWindowInsightvisible = false">
+			<div class="k-content" style="    padding-left: 49px;   padding-top: 15px;">
+				<div class="form-horizontal">
+					
+					<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding">
+							<label for="IssuesTitle">Title<span style="color:red;font-weight:bold">*</span>	
+							<span class="pointer" ng-show="InsightsListF[8].Description != null && InsightsListF[8].Description !='' "	kendo-tooltip k-content="InsightsListF[8].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-8  no-padding">
+							<input type="text" id="IssuesTitle" ng-disabled='ViewMode' style=" border-color: lightgray; width: 109%; padding-left: 7px;" maxlength="60" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Title" />
+						</div>
+					</div>
+						<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="ProjectPhase">Project Phase<span style="color:red;font-weight:bold">*</span>
+							
+<!-- <span class="pointer" ng-show="InsightsListF[7].Description != null && InsightsListF[7].Description !='' "	kendo-tooltip k-content="InsightsListF[7].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span> -->
+</label>
+						</div>
+						<div class="col-sm-8  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.ProjectPhase" disabled  style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"   kendo-drop-down-list k-options="KProjectPhaseDDList">
+							<option value=""	 disabled selected>Select Phase...</option>
+							</select>
+						</div>
+						<div class="col-sm-8  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.ProjectPhase"   style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"   kendo-drop-down-list k-options="KProjectPhaseDDList">
+							<option value=""	 disabled selected>Select Phase...</option>
+							</select>
+						</div>
+					<!--	<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="InsightType">Insight Type</label>
+						</div>
+						<div class="col-sm-3  no-padding">
+							<select required ng-model="Item.InsightType"  ng-disabled='ViewMode' style="width: 210px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" ng-options="x for x in InsightTypeDDList">
+							<option value=""	 disabled selected>Select Phase...</option>
+							</select>
+						</div> -->
+						
+					</div>
+						<div class="form-group">
+						
+
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="InsightCategory">Insight Category<span style="color:red;font-weight:bold">*</span>
+							<span class="pointer" ng-show="InsightsListF[3].Description != null && InsightsListF[3].Description !='' "	kendo-tooltip k-content="InsightsListF[3].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span> </label>
+						</div>
+						<div class="col-sm-8  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.InsightCategory" disabled  style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" kendo-drop-down-list k-options="KInsightCategoryDDList">
+							<option value=""	 disabled selected>Select Category...</option>
+							</select>
+						</div>
+						<div class="col-sm-8  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.InsightCategory"   style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" kendo-drop-down-list k-options="KInsightCategoryDDList">
+							<option value=""	 disabled selected>Select Category...</option>
+							</select>
+						</div>					
+					</div>
+					<div class="form-group">						
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="InsightType">Insight Type<span style="color:red;font-weight:bold">*</span>
+							<span class="pointer" ng-show="InsightsListF[5].Description != null && InsightsListF[5].Description !='' "	kendo-tooltip k-content="InsightsListF[5].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span></label>
+						</div>
+						<div class="col-sm-8  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.InsightType"  disabled  style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" kendo-drop-down-list k-options="KInsightTypeDDList" >
+							<option value=""	 disabled selected>Select Insight Type...</option>
+							</select>
+						</div>
+						<div class="col-sm-8  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.InsightType"   style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" kendo-drop-down-list k-options="KInsightTypeDDList" >
+							<option value=""	 disabled selected>Select Insight Type...</option>
+							</select>
+						</div>
+						
+					</div>
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="InsightDescription">Insight Description
+								<span class="pointer" ng-show="InsightsListF[4].Description != null && InsightsListF[4].Description !='' "	kendo-tooltip k-content="InsightsListF[4].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<!--<textarea name="txtDescription"  rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.InsightDescription"></textarea>-->
+						<textarea name="txtDescription" rows="7" class="k-input k-window-input-width k-window-input-control" style="width:102.5%;"  k-options="editorOptions" k-resizable="true" data-ng-model="Item.InsightDescription"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.InsightDescription)"></p>
+						</div>
+					</div>
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="FutureAction">Future Action
+								<span class="pointer" ng-show="InsightsListF[1].Description != null && InsightsListF[1].Description !='' "	kendo-tooltip k-content="InsightsListF[1].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<!--<textarea name="txtDescription" rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.FutureAction"></textarea>-->
+						<textarea name="txtDescription" rows="7" class="k-input k-window-input-width k-window-input-control" style="width:102.5%;"  k-options="editorOptions" k-resizable="true" data-ng-model="Item.FutureAction"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.FutureAction)"></p>
+						</div>
+					</div>
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="RootCause">Root Cause
+								<span class="pointer" ng-show="InsightsListF[7].Description != null && InsightsListF[7].Description !='' "	kendo-tooltip k-content="InsightsListF[7].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<!--<textarea name="txtDescription" ng-disabled='ViewMode' rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.RootCause"></textarea>-->
+						<textarea name="txtDescription" rows="7" class="k-input k-window-input-width k-window-input-control" style="width:102.5%;"  k-options="editorOptions" k-resizable="true" data-ng-model="Item.RootCause"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.RootCause)"></p>
+						</div>
+					</div>
+						<div class="form-group" title="">	
+						<div class="col-sm-2 riskscss no-padding">
+							<label for="IdentifiedBy">Identified By
+								<span class="pointer" ng-show="InsightsListF[2].Description != null && InsightsListF[2].Description !='' "	kendo-tooltip k-content="InsightsListF[2].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3  no-padding">
+							<input type="text" id="IdentifiedBy" ng-disabled='ViewMode' style=" border-color: lightgray; width: 95%; padding-left: 7px;" maxlength="60" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.IdentifiedBy" />
+						</div>							
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label for="DateIdentified">Date Identified
+								<span class="pointer" ng-show="InsightsListF[0].Description != null && InsightsListF[0].Description !='' "	kendo-tooltip k-content="InsightsListF[0].Description"	>
+<span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3 no-padding" ng-show='ViewMode'>
+							<input id="DateIdentified" disabled style="width: 212px;" kendo-date-picker data-ng-model="Item.DateIdentified"  />
+						</div>
+						<div class="col-sm-3 no-padding" ng-hide='ViewMode'>
+							<input id="DateIdentified"  style="width: 212px;" kendo-date-picker data-ng-model="Item.DateIdentified"  />
+						</div>
+											
+					</div>
+					
+
+					<div class="col-sm-12" ng-hide='ViewMode'>
+						<div class="form-group">
+							<div class="files" id="attachFilesHolder">
+								<label for="ecProjectDescription" class="control-label">Attach a File:</label>
+
+								<input id="file_input" type="file" name="files[]">
+							</div>	
+						</div>
+					</div>
+				<!--	<div class="form-group" title="" >
+						<div class="col-sm-12" >
+							<label for="email">Attachments: </label>
+							<span ng-repeat="x in Item.Attachment.results">										       
+							<a  href="{{x.ServerRelativeUrl}}" title="{{x.ServerRelativeUrl}}">{{x.FileName}} &nbsp;</a>
+							</span>
+						</div>
+					</div>	-->
+					<div class="form-group" title="" >
+						<div class="col-sm-12" >
+							<div class="col-sm-1" >
+									<label style="margin-left: -16px;" for="email">Attachments: </label>
+							</div>
+							<div class="col-sm-9" ng-show="Item.Attachment.results.length != 0" >
+								<span ng-repeat="x in Item.Attachment.results">										       
+									<a  href="{{x.ServerRelativeUrl}}" title="{{x.ServerRelativeUrl}}">{{x.FileName}} </a>
+									<a href="" title="Delete Attachment"  ng-hide='ViewMode' style="margin-left: 20px;" ng-click="InsightsremoveFileFromList(Item,x, $index)">
+										<span class="pointer"><span class="k-icon k-i-trash"></span></span>
+									</a>
+									<br>
+								</span>
+							</div>
+						</div>
+					</div>	
+					
+					<div class="modal-footer foot-modal-footer Kendo-foot-modal-footer">
+						<span class="required" ng-show="ischkInsightAlert" style="color:red;font-weight:bold">Please populate all required fields indicated with an *</span>
+						<div class="col-sm-7 no-padding-left">									
+						</div>
+						<div class="col-sm-4" ng-hide='ViewMode'>	
+							<button id="btnInsightksave"  style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Save changes & exit" ng-click="SaveInsight();">Save</button>																	
+							<button  id="btnInsightClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseInsightForm();">Close</button>
+							
+						</div>
+						<div class="col-sm-4" ng-show='ViewMode'>																		
+							
+							<button id="btnInsightkEdit"  style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Click to Edit" ng-click="EditInsight();">Edit</button>
+							<button  id="btnEditInsightClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseInsightForm();">Close</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--- End K Window -->
+			
+</div>
+

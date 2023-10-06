@@ -1,0 +1,113 @@
+<link href="ProjectFiles/CSSFiles/Insight.css" rel="stylesheet" />
+<div ng-init="init()">
+<div  style="margin: 10px;">
+	<a href="" id="AddNewItemID" ng-click="AddNewItemWindow()">
+		<span class="pointer"><span class="k-icon k-i-plus"></span> Add New</span>
+	</a> 
+</div>
+
+<div id="CommunicationGrid" ></div>
+
+ <div id="KWindowCommunication" style="display:none;" class="kCUSwindow" kendo-window="KWindowCommunication" k-title="'Communication'" k-width="900" k-height="500" k-visible="false" k-on-open="KWindowInsightvisible = true" k-on-close="KWindowInsightvisible = false">
+			<div class="k-content" style="    padding-left: 49px;   padding-top: 15px;">
+				<div class="form-horizontal">
+						<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding">
+							<label for="Title">Title</label>
+						</div>
+						<div class="col-sm-8  no-padding">
+							<input type="text" id="Title" ng-disabled='ViewMode' style=" border-color: lightgray; width: 109%; padding-left: 7px;" maxlength="60" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Title" />
+						</div>
+					</div>	
+						<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Participants">Participants<span style="color:red;font-weight:bold">*</span>
+						</label>
+						</div>
+						<div class="col-sm-8  no-padding" ng-show='ViewMode'>
+						<input type="text" id="Participants" disabled  style='width: 109%;' class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.ParticipantsC" />
+									
+						</div>
+						<div class="col-sm-8  no-padding" ng-hide='ViewMode'>
+							<select required  style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"  kendo-multi-select k-options="PTypeChoice" k-ng-model="Item.Participants"  >
+							</select>
+						</div>
+						
+						<!--<div class="col-sm-8  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.Participants" disabled  style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"  ng-options="color.Role for color in getStakeholdersRes">
+							<option value=""	 disabled selected>Select Participants...</option>
+							</select>
+						</div>
+						<div class="col-sm-8  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.Participants"   style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"   ng-options="color.Role for color in getStakeholdersRes">
+							<option value=""	 disabled selected>Select Participants...</option>
+							</select>
+						</div> -->
+					</div>
+						<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Frequency">Frequency<span style="color:red;font-weight:bold">*</span></label>
+						</div>
+						<div class="col-sm-8  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.Frequency" disabled  style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" ng-options="x for x in FrequencyList">
+							<option value=""	 disabled selected>Select Frequency...</option>
+							</select>
+						</div>
+						<div class="col-sm-8  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.Frequency"   style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" ng-options="x for x in FrequencyList">
+							<option value=""	 disabled selected>Select Frequency...</option>
+							</select>
+						</div>					
+					</div>
+					<div class="form-group">						
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="MeetingType">Meeting Type<span style="color:red;font-weight:bold">*</span></label>
+						</div>
+						<div class="col-sm-8  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.MeetingType"  disabled  style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" ng-options="x for x in MeetingTypeList" >
+							<option value=""	 disabled selected>Select Meeting Type...</option>
+							</select>
+						</div>
+						<div class="col-sm-8  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.MeetingType"   style="width: 111%;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" ng-options="x for x in MeetingTypeList" >
+							<option value=""	 disabled selected>Select Meeting Type...</option>
+							</select>
+						</div>
+						
+					</div>
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Purpose">Purpose
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<!--<textarea name="txtDescription"  rows="4" cols="50" class="k-input k-window-input-width k-window-input-control"	style=" height: 0px; "  kendo-editor k-options="editorOptions" k-resizable="true" k-ng-model="Item.Purpose"></textarea>-->
+						<textarea name="txtDescription" rows="7" class="k-input k-window-input-width k-window-input-control" style="width:102.5%;"  k-options="editorOptions" k-resizable="true" data-ng-model="Item.Purpose"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 101%;  padding: 7px;" ng-bind-html="to_trusted(Item.Purpose)"></p>
+						</div>
+					</div>
+									
+					<div class="modal-footer foot-modal-footer Kendo-foot-modal-footer">
+						<span class="required" ng-show="ischkRiskAlert" style="color:red;font-weight:bold">Please populate all required fields indicated with an *</span>
+						<div class="col-sm-7 no-padding-left">									
+						</div>
+						<div class="col-sm-4" ng-hide='ViewMode'>	
+							<button id="btnInsightksave"  style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Save changes & exit" ng-click="SaveRsik();">Save</button>																	
+							<button  id="btnInsightClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseRiskForm();">Close</button>
+							
+						</div>
+						<div class="col-sm-4" ng-show='ViewMode'>																		
+							
+							<button id="btnInsightkEdit"  style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Click to Edit" ng-click="EditRisk();">Edit</button>
+							<button  id="btnEditInsightClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseRiskForm();">Close</button>
+						</div>
+					</div> 
+				</div>
+			</div>
+		</div>
+	<!--- End K Window -->
+			
+</div>
+

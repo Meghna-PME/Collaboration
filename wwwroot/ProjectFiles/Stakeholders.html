@@ -1,0 +1,83 @@
+
+<link rel="stylesheet" href="ProjectFiles/CSSFiles/Risk.css"> 
+<link href="ProjectFiles/333bootstrap.min.css" rel="stylesheet">
+<div ng-init="init()">
+<div style="margin: 10px;" >
+	<a href="" id="AddNewItemID"  ng-click="AddNewItemWindow()">
+		<span class="pointer"><span class="k-icon k-i-plus"></span> Add New</span>
+	</a> 
+</div>  
+
+
+
+<div id="Stakeholdersgrid" ></div>
+		<!--- K Window -->
+		 <div id="KWindowStakeholders" style="display:none;" class="kCUSwindow" kendo-window="KWindowStakeholders" k-title="'Stakeholders'" k-width="700" k-height="300" k-visible="false" k-on-open="KWindowRiskvisible = true" k-on-close="KWindowRiskvisible = false">
+			<div class="k-content" style="    padding-left: 49px;   padding-top: 15px;">
+				<div class="form-horizontal">
+					<div class="form-group">
+						<div class="col-sm-2 riskscss no-padding">
+							<label for="Role">Role<span style="color:red;font-weight:bold">*</span></label>
+						</div>
+						
+						<div class="col-sm-6  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.Title" disabled style="width: 100%;" class="k-input placeholder Bselect k-inputPadTextBox k-window-input-width k-window-input-control"  ng-options="x for x in RoleDList" >   <!---ng-options="x for x in CategoryDDList" -->
+							<option value=""	 disabled selected>Select Role...</option>
+							</select>
+						</div>
+						<div class="col-sm-6  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.Title"  style="width: 100%;" class="k-input placeholder Bselect k-inputPadTextBox k-window-input-width k-window-input-control"  ng-options="x for x in RoleDList" >   <!---ng-options="x for x in CategoryDDList" -->
+							<option value=""	 disabled selected>Select Role...</option>
+							</select>
+						</div>
+					</div>	
+					
+					<div class="form-group">						
+						<div class="col-sm-2 riskscss no-padding" title="">
+							<label for="AssignedTo">Stakeholders</label>
+						</div>
+						<div class="col-sm-6 no-padding" ng-hide='ViewMode'>
+							<div data-ng-disabled="false" data-ng-model="Item.AssignedTo"  style=""  name="AssignedTo"  ui-people pp-is-multiuser="true"  pp-width="185px" pp-account-type="User,DL" id="AssignedTo"></div>
+						</div>	
+						<div class="col-sm-6 no-padding" ng-show='ViewMode'>
+							<input type="text" disabled style=" border-color: lightgray; width: 94%; padding-left: 7px;"  class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.AssignedTo.Title" />
+						</div>
+					</div>
+					
+					<div class="modal-footer foot-modal-footer Kendo-foot-modal-footer">
+						<span class="required" ng-show="ischkRiskAlert" style="color:red;font-weight:bold">Please populate all required fields indicated with an *</span>
+						<div class="col-sm-6 no-padding-left">							
+						</div>
+						<div class="col-sm-4" ng-hide='ViewMode'>
+							<button id="btnRiisksave"  style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Save changes & exit" ng-click="SaveRsik();">Save</button>	
+							<button  id="btnRiiskClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseRiskForm();">Close</button>
+																		
+					
+						</div>
+						<div class="col-sm-4" ng-show='ViewMode'>										
+							<button id="btnRiskEdit"  style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Click to Edit" ng-click="EditRisk();">Edit</button>
+							<button  id="btnRiiskEditClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseRiskForm();">Close</button>					
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--- End K Window -->
+			
+</div>
+
+<style>
+
+.toggle-off{
+width: 24px !important; 
+	}
+.btn {
+     width: 18px !important;
+    font-size: 14px !important;
+	}
+#peoplePicker_AssignedTo_TopSpan{
+height: 100px !important;
+}
+
+</style>
+

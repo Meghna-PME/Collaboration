@@ -1,0 +1,251 @@
+<link href="ProjectFiles/CSSFiles/Status.css" rel="stylesheet" />
+
+<div ng-init="init()">
+
+<div  style="margin: 10px;" >
+	<span >	
+		<a href="" style='color:#337ab7;' id="AddNewItemID"  ng-click="AddNewItemWindow()">  <!-- ng-hide='TrueProjectName' ng-hide="WeekNumberIstrue" -->
+			<span class="pointer"><span class="k-icon k-i-plus"></span> Add New</span>
+		</a> 
+	</span>		
+</div>
+
+	
+
+<div id="LessonsLearnedMaingrid" ></div>
+	<!--- K Window -->
+	
+		 <div id="KWindowStatusMain" style="display:none;" class="kCUSwindow" kendo-window="KWindowStatusMain" k-title="'Lessons Learned'" k-width="900" k-height="500"  k-visible="false" k-on-open="KWindowStatusMainvisible = true" k-on-close="KWindowStatusMainvisible = false">
+			<div class="k-content" style="    padding-left: 49px;   padding-top: 15px;">
+				<div class="form-horizontal">					
+					<div class="form-group">
+						<div class="col-sm-1 riskscss no-padding">
+							<label for="StatusMainTitle">Title<span style="color:red;font-weight:bold">*</span>
+							<span class="pointer" ng-show="LessonLearnedF[6].Description != null && LessonLearnedF[6].Description !='' "kendo-tooltip k-content="LessonLearnedF[6].Description"	><span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3  no-padding" ng-show='ViewMode'>
+							<input type="text" id="StatusMainTitle"  disabled style=" border-color: lightgray; width: 110%; padding-left: 7px;"  class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Title" />
+						</div>	
+						<div class="col-sm-3  no-padding" ng-hide='ViewMode'>
+							<input type="text" id="StatusMainTitles"  style=" border-color: lightgray; width: 110%; padding-left: 7px;" maxlength="{{LMaxLTitle}}" class="k-input k-inputPadTextBox k-window-input-width k-window-input-control" data-ng-model="Item.Title" />
+						</div>	
+						<div class="col-sm-1 riskscss no-padding" style='margin-left: 28px;' title="">
+							<label class="k-two-col-label" for="KeyLesson">Key Lesson
+							<span class="pointer" ng-show="LessonLearnedF[2].Description != null && LessonLearnedF[2].Description !='' "kendo-tooltip k-content="LessonLearnedF[2].Description"	><span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3  no-padding" ng-show='ViewMode'>
+							<!--<select required ng-model="Item.KeyLesson" disabled  style="width: 260px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" kendo-drop-down-list k-options="KeyLessonLessonsLearned" >
+							<option value=""	 disabled selected>Select Key Lesson...</option>
+							</select> -->
+							<input class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" disabled type="Checkbox" ng-model="Item.KeyLesson"    name="KeyLesson" id="KeyLesson" value="KeyLesson"/>
+						</div>	
+						<div class="col-sm-3  no-padding" ng-hide='ViewMode'>
+							<!--<select required ng-model="Item.KeyLesson"    style="width: 260px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"kendo-drop-down-list k-options="KeyLessonLessonsLearned" >
+							</select> -->
+							<input class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" type="Checkbox" ng-model="Item.KeyLesson"    name="KeyLesson" id="KeyLesson" value="KeyLesson"/>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-1 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Category">Category<span style="color:red;font-weight:bold">*</span>
+							<span class="pointer" ng-show="LessonLearnedF[0].Description != null && LessonLearnedF[0].Description !='' "kendo-tooltip k-content="LessonLearnedF[0].Description"	><span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-3  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.Category" disabled  style="width: 260px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control" kendo-drop-down-list k-options="CategeryLessonsLearned" >
+							<option value=""	 disabled selected>Select Category...</option>
+							</select>
+						</div>
+						<div class="col-sm-3  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.Category"    style="width: 260px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"kendo-drop-down-list k-options="CategeryLessonsLearned" >
+							</select>
+						</div>
+
+
+						<div class="col-sm-1 riskscss no-padding"  style='margin-left: 28px;' title="">
+							<label class="k-two-col-label" for="PositiveorNegative">Positive or Negative<span style="color:red;font-weight:bold">*</span>
+								<span class="pointer" ng-show="LessonLearnedF[4].Description != null && LessonLearnedF[4].Description !='' "kendo-tooltip k-content="LessonLearnedF[4].Description"	><span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+								</label>
+						</div>
+						<div class="col-sm-3  no-padding" ng-show='ViewMode'>
+							<select required ng-model="Item.PositiveorNegative"  disabled style="width: 260px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"kendo-drop-down-list k-options="PositiveorNegativeLessonsLearned" >
+							</select>
+						</div>
+						<div class="col-sm-3  no-padding" ng-hide='ViewMode'>
+							<select required ng-model="Item.PositiveorNegative"  style="width: 260px;" class="k-input placeholder k-inputPadTextBox k-window-input-width k-window-input-control"kendo-drop-down-list k-options="PositiveorNegativeLessonsLearned" >
+							</select>
+						</div>
+						
+					</div>
+								
+			
+					
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Event">Event<span style="color:red;font-weight:bold">*</span>
+							<span class="pointer" ng-show="LessonLearnedF[1].Description != null && LessonLearnedF[1].Description !='' "kendo-tooltip k-content="LessonLearnedF[1].Description"	><span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<textarea  type="text"  id="Event" style='height: 85px;width: 98%' maxlength=""  class="form-control numbersOnly input-sm ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="Item.Event"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 95%;  padding: 7px;" ng-bind-html="to_trusted(Item.Event)"></p>
+						</div>
+					</div>					
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="LessonLearned">Lesson Learned<span style="color:red;font-weight:bold">*</span>
+							<span class="pointer" ng-show="LessonLearnedF[3].Description != null && LessonLearnedF[3].Description !='' "kendo-tooltip k-content="LessonLearnedF[3].Description"	><span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<textarea  type="text"  id="LessonLearned" style='height: 85px;width: 98%' maxlength=""  class="form-control numbersOnly input-sm ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="Item.LessonLearned"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 95%;  padding: 7px;" ng-bind-html="to_trusted(Item.LessonLearned)"></p>
+						</div>
+					</div>
+					<div class="form-group" title="">
+						<div class="col-sm-12 riskscss no-padding" title="">
+							<label class="k-two-col-label" for="Recommendation">Recommendation	
+								<span class="pointer" ng-show="LessonLearnedF[5].Description != null && LessonLearnedF[5].Description !='' "kendo-tooltip k-content="LessonLearnedF[5].Description"	><span class="k-icon k-i-information	k-i-info" style="color: blue;    margin-left: 10px;	"></span></span>
+							</label>
+						</div>
+						<div class="col-sm-11 no-padding" ng-hide='ViewMode'>
+						<textarea  type="text"  id="Recommendation" style='height: 85px;width: 98%' maxlength=""  class="form-control numbersOnly input-sm ng-pristine ng-untouched ng-valid ng-empty" data-ng-model="Item.Recommendation"></textarea>
+						</div>
+						<div class="col-sm-11 no-padding" ng-show='ViewMode'>
+							<p class="bordercolorPG ng-binding" style=" width: 95%;  padding: 7px;" ng-bind-html="to_trusted(Item.Recommendation)"></p>
+						</div>
+					</div>
+															
+					<div class="modal-footer foot-modal-footer Kendo-foot-modal-footer">
+							<div>
+								<span class="required" ng-show="ischkStatusMainAlert" style="color:red;font-weight:bold">Please populate all required fields indicated with an *</span>
+								</div>
+								<div class="col-sm-7 no-padding-left">									
+								</div>
+								<div class="col-sm-4" ng-hide='ViewMode'>
+									<button id="btnStatusMainsave"   style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Save changes & exit" ng-click="SaveLLMain();">Save</button>	
+							<button  id="btnStatusMainClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseLLMainForm();">Close</button>
+																		
+					
+						</div>
+						<div class="col-sm-4" ng-show='ViewMode'>																		
+									
+									<button id="btnStatuysMainEdit"   style="background-color: white;" class="k-button btn btn-primary btnS save-button" title="Click to Edit" ng-click="EditLLMain();">Edit</button>
+										<button  id="btnEditStatusMainClose" style="background-color: white;" class="k-button btn btnC  save-button"  ng-click="CloseLLMainForm();">Close</button>
+								</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<!--- End K Window -->
+</div>
+
+
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {  
+  background-color: #f1f1f1;
+  width:auto
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: inherit;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 5px 0px;
+  transition: 0.3s;
+  font-size: 13px;
+  margin: 0px;
+  
+  min-width: 6em;
+}
+
+/* Change background color of buttons on hover width: 100px;*/
+.tab button:hover {
+  background-color: #ddd;
+}
+
+/* Create an active/current tablink class background-color: #ccc; */
+.tab button.NotSet {
+  background-color: Black;
+  color: white;
+}
+
+.tab button.active {
+  background-color: Black;
+  color: white;
+}
+
+.tab button.NotSet {
+  background-color: Grey;
+  color: white;
+}
+.tab button.Green {
+  background-color: #41bd46;
+  color: white;
+}
+.tab button.Yellow {
+  background-color: #F9FF33;
+  color: black;
+}
+.tab button.Red {
+  background-color: red;
+  color: white;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.tablinks {
+	width:20%
+}
+
+.tab button.NotSet1 {
+  background-color: Grey;
+  color: white;
+}
+.tab button.NotSet2 {
+  background-color: Grey;
+  color: white;
+}
+.tab button.NotSet3 {
+  background-color: Grey;
+  color: white;
+}
+.tab button.NotSet4 {
+  background-color: Grey;
+  color: white;
+}
+.tab button.NotSet5 {
+  background-color: Grey;
+  color: white;
+}
+.tab button.NotSet6 {
+  background-color: Grey;
+  color: white;
+}
+.k-tooltip-content {
+    text-align: left;
+}
+.k-window{
+top: 20% !important;
+    left: 15% !important;
+}
+</style>
+

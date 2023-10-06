@@ -1,0 +1,289 @@
+
+		  .form-control{
+         font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+         font-size: 14px;
+         color: black  !important;
+         }
+       
+            #s4-workspace {
+             margin-top: 0px !important;
+
+         }
+         .k-grid td {
+                border-bottom-width: 1px !important;
+            }
+         .ui-autocomplete {
+         max-height: 300px;
+         overflow-y: auto;
+         width: auto;
+         overflow-x: hidden;
+         }
+         /* IE 6 doesn't support max-height
+         * we use height instead, but this forces the menu to always be this tall
+           #s4-workspace {
+            /* margin-top: 80px !important;
+
+         }
+          #s4-ribbonrow{
+         height: 33px !important;
+         }
+         */
+         * html .ui-autocomplete {
+         height: 100px;
+         }
+         .activetabbuttons {  
+         color: #555 !important;
+         cursor: default !important;
+         background-color: #fff !important;
+         border: 1px solid #ddd !important;
+         border-bottom-color: transparent !important;
+         }
+         .notactivetabbuttons  { 
+         margin-right: 2px !important;
+         line-height: 1.42857143 !important;
+         border: 1px solid transparent !important;
+         border-radius: 4px 4px 0 0 !important;
+         }
+         .k-i-arrow-60-down, .k-i-arrow-60-left, .k-i-arrow-60-right, .k-i-arrow-60-up,.k-i-arrow-60-right
+         {
+         color: black;
+         }
+         .ui-jqgrid .ui-jqgrid-htable th div
+         {
+         height: auto;
+         overflow: hidden;
+         padding-right: 4px;
+         padding-top: 2px;
+         position: relative;
+         vertical-align: text-top;
+         white-space: normal !important;
+         }
+     
+         .btn-pill {
+         border-radius: 50em;
+         }
+         .btn-success {
+         color: #fff;
+         background-color: #4dbd74;
+         border-color: #4dbd74;
+         }
+         .btn {
+         display: inline-block;
+         font-weight: $btn-font-weight;
+         text-align: center;
+         white-space: nowrap;
+         vertical-align: middle;
+         user-select: none;
+         border: $btn-border-width solid transparent;
+         }
+         select::-ms-expand {
+         border:none;
+         background:#fff;
+         }
+         .bordercolorPG {	
+         border-width: 1px;
+         border-style: solid;
+         border-color: lightgray;
+         color: lightgray;
+         }
+        
+         #DivStackHolderCtrls .sp-peoplepicker-topLevel {
+         padding: 0;
+         min-height: auto !important;
+         }
+         .k-button, .k-calendar .k-footer, .k-calendar .k-header .k-link {
+         text-transform: none !important;
+         }
+         .k-i-calendar:before {
+         content: "\e108";
+         }
+         .k-i-image {
+         display: none !important;
+         }
+         .k-i-table-insert {
+         display: none !important;
+         }
+         .pdf-page {
+         position: relative;
+         margin: 0 auto;
+         padding: .4in .3in;
+         color: #333;
+         background-color: #fff;
+         box-shadow: 0 5px 10px 0 rgba(0, 0, 0, .3);
+         box-sizing: border-box;
+         }
+         .pdf-header {
+         padding-bottom: .2in;
+         margin-bottom: .3in;
+         border-bottom: 1px solid #e5e5e5;
+         }
+         .invoice-number {
+         padding-top: .1in;
+         float: right;
+         }
+         .pdf-footer {
+         position: absolute;
+         bottom: .25in;
+         left: .3in;
+         right: .3in;
+         padding-top: 0.05in;
+         border-top: 1px solid #e5e5e5;
+         font-size: 0.9em;
+         text-align: left;
+         color: #787878;
+         }
+         .addresses {
+         font-size: 12px;
+         }
+         .addresses:after {
+         display: block;
+         content: "";
+         clear: both;
+         }
+         .for {
+         float: left;
+         }
+         .from {
+         float: right;
+         }
+         .addresses p {
+         color: #787878;
+         padding: .05in 0;
+         border-top: 1px solid #e5e5e5;
+         }
+         .addresses p:first-of-type {
+         border-top: 0;
+         }
+         .pdf-body {
+         margin-top: .3in;
+         }
+         .company-logo {
+         font-size: 1.8em;
+         font-weight: bold;
+         color: #3aabf0;
+         }
+         .signature {
+         padding-top: .3in;
+         }
+         /* Dimensions other than px and em should be divided by 1.33 for the proper PDF output */
+         .size-a4 {
+         width: 6.2in;
+         height: 8.7in;
+         }
+         .size-letter {
+         width: 6.3in;
+         height: 8.2in;
+         }
+         .size-executive {
+         width: 5.4in;
+         height: 7.8in;
+         font-size: 12px;
+         }
+         .size-executive .pdf-header {
+         margin-bottom: .1in;
+         }
+         .rowMrgRight {
+         margin-right: -29px;
+         }
+         .rowMrgleft {
+         margin-left: 26px;
+         }
+         .example {
+         min-height: 400px;
+         }
+         /*Appended*/
+         .k-detail-cell .k-tabstrip .k-content {
+         padding: 0.2em;
+         }
+         .employee-details ul {
+         list-style: none;
+         font-style: italic;
+         margin: 15px;
+         padding: 0;
+         }
+         .employee-details ul li {
+         margin: 0;
+         line-height: 1.7em;
+         }
+         .employee-details label {
+         display: inline-block;
+         width: 90px;
+         padding-right: 10px;
+         text-align: right;
+         font-style: normal;
+         font-weight: bold;
+         }
+         .modal-footer {
+         border-top: white !important;
+         }
+         .k-inputPadTextBox {
+         padding-bottom: 11px !important;
+         }
+         .save-button
+         {
+         margin-top: 6px !important ;
+         width: 84px !important ;
+         font-size: 16px;
+         padding-bottom: 2px !important ;
+         border-radius: 50em;
+         }
+         #btnAdminSHUPDATE,#btnAdminSHSAVE,#btnTRSHSAVE,#btnTRCancel,#btnSHSAVE,#btnTRCancel
+         {		
+         width: 84px !important ;
+         font-size: 12px;		
+         border-radius: 50em;
+         }
+         #btnTRDeleteId
+         {		
+         width: 145px !important ;
+         font-size: 12px;		
+         border-radius: 50em;
+         }
+         #dialogAskNeed {
+         overflow: unset !important;
+         }
+         .kCUSwindow {
+         overflow-x: hidden !important;
+         }
+         .k-grid-content {
+         overflow-x: hidden !important;
+         }
+         .k-editor-toolbar .k-button-group .k-tool {
+         width: 38px !important;
+         height: 30px !important;
+         line-height: 0px !important;
+         }
+         .configuration {
+         height: 376px;
+         width: 200px;
+         }
+         .configuration .console {
+         background-color: transparent;
+         border: 0;
+         height: 342px;
+         overflow: auto;
+         }
+         .riskscssaaa {
+         margin-top: 5px;
+         }
+         .k-editable-area {
+         min-height:30px  !important;
+         } 
+         .k-editor iframe.k-content {
+         min-height: 50px !important;
+         }
+         #DeltaPageStatusBar {
+         margin-top: 47px !important;
+         }
+         #DeltaPlaceHolderMain {
+         margin-top: -72px !important;
+         }
+         a:visited {
+    color: hsl(228, 39%, 58%) !important;
+    text-decoration: none;
+}
+     
+     .k-grid tr:hover {
+    color: #fff !important;
+    background-color: #8ebc00 !important;
+}
